@@ -1,0 +1,22 @@
+{
+  "name": "rn-camera-roll",
+  "version": "0.0.1",
+  "description": "Camera Roll for react native Android",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Almouro/rn-camera-roll.git"
+  },
+  "keywords": [
+    "react-native",
+    "react",
+    "android",
+    "camera",
+    "camera-roll"
+  ],
+  "author": "Almouro <alexandrem@bamlab.fr> (http://bamlab.fr)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Almouro/rn-camera-roll/issues"
+  },
+  "homepage": "https://github.com/Almouro/rn-camera-roll#readme"
+}
