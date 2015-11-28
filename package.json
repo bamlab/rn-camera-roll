@@ -1,6 +1,6 @@
 {
   "name": "rn-camera-roll",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Camera Roll for react native Android",
   "repository": {
     "type": "git",
@@ -13,6 +13,9 @@
     "camera",
     "camera-roll"
   ],
+  "peerDependencies": {
+    "react-native": ">=v0.14.2"
+  },
   "author": "Almouro <alexandrem@bamlab.fr> (http://bamlab.fr)",
   "license": "MIT",
   "bugs": {
