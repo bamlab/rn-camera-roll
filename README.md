@@ -2,8 +2,16 @@
 
 ## Table of contents
 
+* [Example](https://github.com/bamlab/rn-camera-roll#example)
 * [Setup](https://github.com/bamlab/rn-camera-roll#setup)
 * [Usage](https://github.com/bamlab/rn-camera-roll#usage)
+
+## Example
+
+Checkout [this example](https://github.com/bamlab/rn-camera-roll/tree/master/example) of a basic gallery app with infinite scroll:  
+https://github.com/bamlab/rn-camera-roll/tree/master/example
+
+![alt text](https://raw.githubusercontent.com/bamlab/rn-camera-roll/master/example/screenshot.png "Logo Title Text 1")
 
 ## Setup
 
