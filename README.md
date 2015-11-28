@@ -15,6 +15,13 @@ https://github.com/bamlab/rn-camera-roll/tree/master/example
 
 ## Setup
 
+First, install the package:
+```
+npm install rn-camera-roll
+```
+
+Then, follow those instructions:
+
 ### iOS
 
 The Camera Roll iOS API is part of `react-native`.
