@@ -30,12 +30,31 @@ by following the [libraries linking instructions](https://facebook.github.io/rea
 
 ### Android
 
-Update your gradle files by running:
+#### Update your gradle files
+
+For **react-native >= v0.15**, this command will do it automatically:
 ```
 react-native link rn-camera-roll
 ```
 
-Then register the package into your `MainActivity`:
+For **react-native = v0.14**
+You will have to update them manually:
+
+In `android/settings.gradle`, add:
+```
+include ':rn-camera-roll'
+project(':rn-camera-roll').projectDir = new File(settingsDir, '../node_modules/rn-camera-roll/android')
+```
+
+In `android/app/build.gradle` add:
+```
+dependencies {
+  ...
+  compile project(':rn-camera-roll')
+}
+```
+
+#### Register the package into your `MainActivity`
 ```java
 package com.example;
 
