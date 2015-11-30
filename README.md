@@ -11,7 +11,7 @@
 Checkout [this example](https://github.com/bamlab/rn-camera-roll/tree/master/example) of a basic gallery app with infinite scroll:  
 https://github.com/bamlab/rn-camera-roll/tree/master/example
 
-![alt text](https://raw.githubusercontent.com/bamlab/rn-camera-roll/master/example/screenshot.png "Logo Title Text 1")
+<img width=300 src=https://raw.githubusercontent.com/bamlab/rn-camera-roll/master/example/screenshot.png />
 
 ## Setup
 
