@@ -10,6 +10,8 @@ function formatToIosCameraRollFormat(imageDataList) {
         node: {
           image: {
             uri: ANDROID_FILE_PREFIX + imageData.uri,
+            width: imageData.width,
+            height: imageData.height,
           },
         },
       };
