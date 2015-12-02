@@ -37,12 +37,14 @@ class CameraRollModule extends ReactContextBaseJavaModule {
     public void getCameraImages(ReadableMap data, Callback onSuccess) {
         WritableNativeArray result = new WritableNativeArray();
 
-        for(String imagePath : CameraImagesManager.getCameraImages(this.context,
+        for(CameraImage imageData : CameraImagesManager.getCameraImages(this.context,
                 data.getInt("first"), data.hasKey("after") ? data.getString("after") : "")) {
-            WritableMap imageData = new WritableNativeMap();
-            imageData.putString("uri", imagePath);
+            WritableMap imageDataMap = new WritableNativeMap();
+            imageDataMap.putString("uri", imageData.getLocalPath());
+            imageDataMap.putInt("width", imageData.getWidth());
+            imageDataMap.putInt("height", imageData.getHeight());
 
-            result.pushMap(imageData);
+            result.pushMap(imageDataMap);
         }
 
         onSuccess.invoke(result);

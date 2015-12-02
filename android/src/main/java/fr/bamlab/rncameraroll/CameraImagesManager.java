@@ -2,6 +2,7 @@ package fr.bamlab.rncameraroll;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.provider.MediaStore;
 
@@ -20,7 +21,7 @@ class CameraImagesManager {
         return String.valueOf(path.toLowerCase().hashCode());
     }
 
-    public static List<String> getCameraImages(Context context, int count, String afterCursor) {
+    public static List<CameraImage> getCameraImages(Context context, int count, String afterCursor) {
         final String[] projection = {MediaStore.Images.Media.DATA, MediaStore.Images.Media._ID};
         final String selection = MediaStore.Images.Media.BUCKET_ID + " = ?";
         final String[] selectionArgs = {CAMERA_IMAGE_BUCKET_ID};
@@ -31,7 +32,7 @@ class CameraImagesManager {
                 null
         );
 
-        ArrayList<String> cameraImagePaths = new ArrayList<>();
+        ArrayList<CameraImage> cameraImagePaths = new ArrayList<>();
 
         if (cursor == null) {
             return cameraImagePaths;
@@ -50,7 +51,7 @@ class CameraImagesManager {
                     continue; // Skip until we get to the first one
                 }
 
-                cameraImagePaths.add(localPath);
+                cameraImagePaths.add(new CameraImage(localPath));
             } while (cursor.moveToPrevious() && cameraImagePaths.size() < count);
         }
         cursor.close();
