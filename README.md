@@ -109,25 +109,25 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
 You can use the `getPhotos` API as you would with the iOS API with the `after` and the `first` params.
 
 ```javascript
-var CameraRoll = require('rn-camera-roll');
+import CameraRoll from 'rn-camera-roll';
 
 onPhotosFetchedSuccess(data) {
-    var photos = data.edges.map((asset) => {
-      return asset.node.image;
-    });
-    console.log(photos);
-  }
+  const photos = data.edges.map((asset) => {
+    return asset.node.image;
+  });
+  console.log(photos);
+}
 
-  onPhotosFetchError() {
-    // TODO: Handle error
-  }
+onPhotosFetchError(err) {
+  // Handle error here
+}
 
-  fetchPhotos(count = 10, after) {
-    CameraRoll.getPhotos({
-      // take the first n photos after given photo uri
-      first: count,
-      // after
-      after: "file:/storage/emulated/0/DCIM/Camera/IMG_20151126_115520477.jpg",
-    }, this.onPhotosFetchedSuccess.bind(this), this.onPhotosFetchError.bind(this));
-  }
+fetchPhotos(count = 10, after) {
+  CameraRoll.getPhotos({
+    // take the first n photos after given photo uri
+    first: count,
+    // after
+    after: "file:/storage/emulated/0/DCIM/Camera/IMG_20151126_115520477.jpg",
+  }, this.onPhotosFetchedSuccess.bind(this), this.onPhotosFetchError.bind(this));
+}
 ```

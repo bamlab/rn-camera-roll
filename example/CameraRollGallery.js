@@ -60,8 +60,9 @@ export default class CameraRollGallery extends Component {
     if (newPhotos.length) this.lastPhotoFetched = newPhotos[newPhotos.length - 1].uri;
   }
 
-  onPhotosFetchError() {
-    // TODO: Handle error
+  onPhotosFetchError(err) {
+    // Handle error here
+    console.log(err);
   }
 
   fetchPhotos(count = PHOTOS_COUNT_BY_FETCH, after) {
