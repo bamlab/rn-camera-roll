@@ -116,6 +116,24 @@ onPhotosFetchedSuccess(data) {
     return asset.node.image;
   });
   console.log(photos);
+  /**
+  On Android, this should log something like:
+  [
+    {
+      "uri": "file:/storage/emulated/0/DCIM/Camera/IMG_20160120_172426830.jpg",
+      "width":3006,
+      "height":5344,
+      "orientation": 90
+    },
+    {
+      "uri": "file:/storage/emulated/0/DCIM/Camera/IMG_20160116_153526816_TOP.jpg",
+      "width": 5344,
+      "height": 3006,
+      "orientation": 0
+    }
+    ...
+  ]
+  **/
 }
 
 onPhotosFetchError(err) {
