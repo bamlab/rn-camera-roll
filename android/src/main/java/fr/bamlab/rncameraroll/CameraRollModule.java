@@ -43,6 +43,7 @@ class CameraRollModule extends ReactContextBaseJavaModule {
             imageDataMap.putString("uri", imageData.getLocalPath());
             imageDataMap.putInt("width", imageData.getWidth());
             imageDataMap.putInt("height", imageData.getHeight());
+            imageDataMap.putInt("orientation", imageData.getOrientation());
 
             result.pushMap(imageDataMap);
         }
