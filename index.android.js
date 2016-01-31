@@ -14,6 +14,7 @@ function formatToIosCameraRollFormat(imageDataList) {
             height: imageData.height,
             orientation: imageData.orientation,
           },
+          timestamp: parseInt(imageData.timestamp)
         },
       };
     }),
