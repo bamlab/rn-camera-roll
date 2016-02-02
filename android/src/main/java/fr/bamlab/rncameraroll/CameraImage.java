@@ -2,9 +2,9 @@ package fr.bamlab.rncameraroll;
 
 import android.graphics.BitmapFactory;
 import android.media.ExifInterface;
-import java.text.SimpleDateFormat;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by florian on 02/12/15.
@@ -20,9 +20,20 @@ class CameraImage {
         this.localPath = localPath;
 
         computeDimensions();
-        computeOrientation();
-        computeTimestamp();
-    };
+        computeExifProperties();
+    }
+
+    private void computeExifProperties() {
+        ExifInterface exif;
+        try {
+            exif = new ExifInterface(localPath);
+        } catch(IOException e) {
+            return;
+        }
+
+        computeOrientation(exif);
+        computeTimestamp(exif);
+    }
 
     private void computeDimensions() {
         BitmapFactory.Options options = new BitmapFactory.Options();
@@ -33,40 +44,31 @@ class CameraImage {
         height = options.outHeight;
     }
 
-    private void computeOrientation() {
-        ExifInterface exif;
-        orientation = 0;
-        try {
-            exif = new ExifInterface(localPath);
-            int exifOrientation = exif.getAttributeInt(
-                    ExifInterface.TAG_ORIENTATION,
-                    ExifInterface.ORIENTATION_NORMAL);
+    private void computeOrientation(ExifInterface exif) {
+        int exifOrientation = exif.getAttributeInt(
+                ExifInterface.TAG_ORIENTATION,
+                ExifInterface.ORIENTATION_NORMAL);
 
-            switch (exifOrientation) {
-                case ExifInterface.ORIENTATION_ROTATE_90:
-                    orientation = 90;
-                    break;
+        switch (exifOrientation) {
+            case ExifInterface.ORIENTATION_ROTATE_90:
+                orientation = 90;
+                break;
 
-                case ExifInterface.ORIENTATION_ROTATE_180:
-                    orientation = 180;
-                    break;
+            case ExifInterface.ORIENTATION_ROTATE_180:
+                orientation = 180;
+                break;
 
-                case ExifInterface.ORIENTATION_ROTATE_270:
-                    orientation = 270;
-                    break;
-            }
-        } catch (IOException e) {
-            // Can't retrieve the orientation, let it to 0.
+            case ExifInterface.ORIENTATION_ROTATE_270:
+                orientation = 270;
+                break;
         }
     }
 
-    private void computeTimestamp() {
+    private void computeTimestamp(ExifInterface exif) {
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
+        String dateString = exif.getAttribute(ExifInterface.TAG_DATETIME);
+
         try {
-            SimpleDateFormat fmt = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
-
-            ExifInterface exif = new ExifInterface(localPath);
-            String dateString = exif.getAttribute(ExifInterface.TAG_DATETIME);
-
             timestamp = fmt.parse(dateString).getTime() / 1000;
         } catch (Exception e) {
             // Can't retrieve the timestamp, let it be 0.
