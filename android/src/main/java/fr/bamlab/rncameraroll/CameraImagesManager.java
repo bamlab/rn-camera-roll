@@ -22,9 +22,6 @@ class CameraImagesManager {
     }
 
     public static List<CameraImage> getCameraImages(Context context, int count, String afterCursor) {
-        final String[] projection = {MediaStore.Images.Media.DATA, MediaStore.Images.Media._ID};
-        final String selection = MediaStore.Images.Media.BUCKET_ID + " = ?";
-        final String[] selectionArgs = {CAMERA_IMAGE_BUCKET_ID};
         final Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                 null,
                 null,
