@@ -22,14 +22,20 @@ function formatToIosCameraRollFormat(imageDataList) {
 }
 
 export default {
-  getPhotos: (fetchParams) => {
+  getPhotos: (fetchParams, onSuccess) => {
     if(fetchParams.after) {
       fetchParams.after = fetchParams.after.replace(ANDROID_FILE_PREFIX, '');
     }
-    return new Promise((resolve, reject) => {
+    if(onSuccess && typeof onSuccess === 'function') {
       CameraRollAndroid.getCameraImages(fetchParams, (imageDataList) => {
-        resolve(formatToIosCameraRollFormat(imageDataList));
+        onSuccess(formatToIosCameraRollFormat(imageDataList));
       });
-    });
+    } else {
+      return new Promise((resolve, reject) => {
+        CameraRollAndroid.getCameraImages(fetchParams, (imageDataList) => {
+          resolve(formatToIosCameraRollFormat(imageDataList));
+        });
+      }); 
+    }
   },
 };
