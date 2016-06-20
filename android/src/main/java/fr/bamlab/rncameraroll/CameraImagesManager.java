@@ -13,22 +13,11 @@ import java.util.List;
  * Created by almouro on 11/12/15.
  */
 class CameraImagesManager {
-    private static final String CAMERA_IMAGE_BUCKET_NAME =
-            Environment.getExternalStorageDirectory().toString() + "/DCIM/Camera";
-    private static final String CAMERA_IMAGE_BUCKET_ID = getBucketId(CAMERA_IMAGE_BUCKET_NAME);
-
-    private static String getBucketId(String path) {
-        return String.valueOf(path.toLowerCase().hashCode());
-    }
-
     public static List<CameraImage> getCameraImages(Context context, int count, String afterCursor) {
-        final String[] projection = {MediaStore.Images.Media.DATA, MediaStore.Images.Media._ID};
-        final String selection = MediaStore.Images.Media.BUCKET_ID + " = ?";
-        final String[] selectionArgs = {CAMERA_IMAGE_BUCKET_ID};
         final Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                projection,
-                selection,
-                selectionArgs,
+                null,
+                null,
+                null,
                 null
         );
 
