@@ -110,6 +110,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
 ## Usage
 
 You can use the `getPhotos` API as you would with the iOS API with the `after` and the `first` params.
+You can use both the `promise` syntax or the `callback` syntax.
 
 ```javascript
 import CameraRoll from 'rn-camera-roll';
