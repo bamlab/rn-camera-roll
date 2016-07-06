@@ -153,3 +153,9 @@ fetchPhotos(count = 10, after) {
   }, this.onPhotosFetchedSuccess.bind(this), this.onPhotosFetchError.bind(this));
 }
 ```
+
+## Other open-source modules by the folks at [BAM](http://github.com/bamlab)
+
+ * [react-native-image-resizer](https://github.com/bamlab/react-native-image-resizer)
+ * [react-native-animated-picker](https://github.com/bamlab/react-native-animated-picker)
+ * [cordova-plugin-native-routing](https://github.com/bamlab/cordova-plugin-native-routing)
