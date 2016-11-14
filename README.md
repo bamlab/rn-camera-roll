@@ -1,7 +1,7 @@
 # React Native Camera Roll
 
 **UPDATE:**
-As of react-native `0.19`, the [CameraRoll module](https://facebook.github.io/react-native/docs/cameraroll.html#content) is now available on Android too!
+### As of react-native `0.19`, the [`CameraRoll` API](https://facebook.github.io/react-native/docs/cameraroll.html#content) is now available on Android too! You should not use this module anymore and only use the `CameraRoll` API from React Native.
 
 ## Table of contents
 
